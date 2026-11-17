@@ -39,6 +39,11 @@ h2{font-size:clamp(18px,3.6vw,24px);margin:10px 0 14px}h3{color:var(--g);margin:
 .wb{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.wb .sec{margin:0;padding:6px 12px}
 .ef{font-size:10.5px;opacity:.85;margin:3px 0;line-height:1.25}.cd{font-size:12.5px;opacity:.9;margin:2px 0 8px}
 #sap{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.bg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.bc{background:#0b2236;border:2px solid #1e90ff55;border-radius:12px;padding:6px;text-align:center;font-size:11px;cursor:pointer;line-height:1.25}.bc img{width:64px;height:64px;image-rendering:pixelated}.bc.u img{filter:brightness(0);opacity:.5}
+.egg{width:90px;height:116px;margin:14px auto;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(circle at 32% 28%,#fffbe8,#f1d9a8 55%,#d1a860);box-shadow:inset -8px -10px 0 #0002,0 8px 0 #0003;animation:wob 2.2s ease-in-out}
+@keyframes wob{0%,100%{transform:rotate(0)}10%{transform:rotate(-10deg)}25%{transform:rotate(10deg)}40%{transform:rotate(-14deg) scale(1.03)}55%{transform:rotate(14deg) scale(1.05)}70%{transform:rotate(-8deg)}85%{transform:rotate(8deg) scale(1.08)}}
+.rev{animation:zin .6s cubic-bezier(.2,.9,.3,1)}
+.egs{flex:0 0 34px;width:34px;height:42px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;box-shadow:inset -3px -4px 0 #0002}
 .rw{display:flex;gap:10px;align-items:center;background:#0b2236;border:2px solid #1e90ff55;border-radius:12px;padding:8px 10px;margin:6px 0}.rw.ow{border-color:var(--gold)}.rw.lk{opacity:.6}.rw i{font-style:normal;font-size:30px;flex:0 0 38px;text-align:center}.rw .rt{flex:1;font-size:13px;min-width:0}.rw .rb{flex:0 0 auto;text-align:right;font-size:12px}.rw button{font:inherit;font-size:12px;font-weight:700;margin-top:4px;border-radius:14px;border:0;background:var(--gold);color:#222;padding:5px 12px;cursor:pointer}.rw button:disabled{background:#456;color:#9ab;cursor:default}
 .wv{display:flex;align-items:center;justify-content:center;background:#2f95e0}#wc{image-rendering:pixelated;display:block;cursor:pointer}
 .dp{position:absolute;left:6px;bottom:6px;display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:2px;opacity:.78;touch-action:none}.dp button{border:2px solid #fff;border-radius:10px;background:#0b2236cc;color:#fff;font:700 14px sans-serif;padding:0;touch-action:none}
@@ -101,7 +106,7 @@ body.mil::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;
 </style></head><body>
 <button class="mb" onclick="tg()" aria-label="Menu">☰</button><div class="bk" id="bk" onclick="tg(0)"></div>
 <nav class="dr" id="dr"><div class="dh"><b>Menu do jogador</b><button class="sec" style="margin:0" onclick="tg(0)">✕</button></div>
-<div class="tabs"><button class="sec" data-t="p" onclick="tab('p')">👤 Perfil</button><button class="sec" data-t="d" onclick="tab('d')">📋 Diagnóstico</button><button class="sec" data-t="b" onclick="tab('b')">🏦 Banco e loja</button><button class="sec" data-t="w" onclick="tab('w')">🏡 Mundinho</button><button class="sec" data-t="a" onclick="tab('a')">🏅 Conquistas</button></div><div id="dc"></div></nav>
+<div class="tabs"><button class="sec" data-t="p" onclick="tab('p')">👤 Perfil</button><button class="sec" data-t="d" onclick="tab('d')">📋 Diagnóstico</button><button class="sec" data-t="b" onclick="tab('b')">🏦 Banco e loja</button><button class="sec" data-t="w" onclick="tab('w')">🏡 Mundinho</button><button class="sec" data-t="a" onclick="tab('a')">🏅 Conquistas</button><button class="sec" data-t="o" onclick="tab('o')">🥚 Biomons</button></div><div id="dc"></div></nav>
 <div id="qz" class="qzo" hidden></div>
 <header class="cr top">Um projeto de Prof. Gabriel Botelho. Siga no Instagram <a href="https://www.instagram.com/gabrielbotelho_bio" target="_blank" rel="noopener">@gabrielbotelho_bio</a>.</header>
 <div class="app">
@@ -649,7 +654,9 @@ const A=[
 ['team','🧑','Time dos sonhos','Contrate todos os tipos de equipe',20000000,o=>al(o,'G')],
 ['idle','⏱️','Renda de quem não dorme','Alcance B$ 1.000 por segundo de renda passiva',2000000,(o,b)=>rate(b)>=1000],
 ['ultra','🚀','Senhor dos trilhões','Tenha todos os ultra-projetos',1000000000000,o=>al(o,'Y')],
-['tri','💎','Trilionário','Acumule B$ 1 trilhão no total',50000000000,(o,b)=>b.tot>=1e12]];
+['tri','💎','Trilionário','Acumule B$ 1 trilhão no total',50000000000,(o,b)=>b.tot>=1e12],
+['bio10','🦋','Naturalista','Descubra 10 Biomons',300000,()=>Object.keys((ls('bbbio')||{col:{}}).col).length>=10],
+['bio40','🦜','Arca da biodiversidade','Descubra 40 Biomons',50000000,()=>Object.keys((ls('bbbio')||{col:{}}).col).length>=40]];
 const gb=()=>ls('bbbank')||{bal:0,best:0,tot:0,sp:0,own:[],ach:[],cnt:{}},bm=n=>{n=Math.floor(n);for(const a of [[1e15,' quatri'],[1e12,' tri'],[1e9,' bi']])if(n>=a[0]){const v=n/a[0];return 'B$ '+(v>=100?Math.round(v):v.toFixed(v>=10?1:2)).toString().replace('.',',')+a[1]}return 'B$ '+n.toLocaleString('pt-BR')};
 function chk(b){const m=[];A.forEach(a=>{if(!b.ach.includes(a[0])&&a[5](b.own,b)){b.ach.push(a[0]);b.bal+=a[4];m.push('🏅 '+a[2]+' (+'+bm(a[4])+')')}});return m}
 function toast(m){document.querySelectorAll('.toast').forEach(x=>x.remove());const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),Math.max(2000,m.length*55))}
@@ -929,6 +936,136 @@ function deco(o,t,ph){let s='';const S=Math.sin;
  s+=`<ellipse cx='294' cy='101' rx='3' ry='1.6' fill='#2e9a5a'/><ellipse cx='306' cy='96' rx='3' ry='1.6' fill='#2e9a5a'/><circle cx='306' cy='96' r='1' fill='#fff'/><g transform='translate(${(300+S(t*.8)*8).toFixed(1)},99)'><ellipse rx='2.6' ry='1.7' fill='#fff'/><circle cx='2.6' cy='-1.2' r='1.1' fill='#fff'/><rect x='3.5' y='-1.2' width='1.6' height='.9' fill='#f2a33a'/></g>`;
  s+=[[240,316],[100,320],[200,322],[320,300]].map(a=>`<path d='M${a[0]} ${a[1]-2}l1 1.6 1.8 .2-1.4 1.2.4 1.8-1.8-1-1.8 1 .4-1.8-1.4-1.2 1.8-.2z' fill='#ff9db0'/>`).join('');
  return s}
+const BIO=[
+'Capivara|Hydrochoerus hydrochaeris|m|#9a6b3f|#c9a06a|V|Pantanal e várias regiões|1|É o maior roedor do mundo e passa horas na água para se refrescar.',
+'Preá|Cavia aperea|r|#8a7458|#d4c19a|V|Campos e Cerrado|1|Roedor herbívoro que vive em grupos e se esconde em tocas rasas.',
+'Cutia|Dasyprocta azarae|r|#b5762f|#e6c27a|V|Mata Atlântica e Cerrado|1|Enterra sementes e ajuda a espalhar árvores, como as castanheiras.',
+'Gambá-de-orelha-branca|Didelphis albiventris|r|#8f8f8f|#f4f4f4|V|Várias regiões|1|Marsupial que carrega os filhotes na bolsa e se finge de morto ao se assustar.',
+'Tatu-galinha|Dasypus novemcinctus|m|#8d7a66|#c9b79a|a|Várias regiões|1|Gera quase sempre quadrigêmeos geneticamente idênticos.',
+'Mico-estrela|Callithrix penicillata|p|#6b5a4a|#f1f1f1|T|Cerrado|1|Pequeno primata que se alimenta de seiva, frutos e insetos.',
+'Macaco-prego|Sapajus libidinosus|p|#a6794a|#4a3320|V|Cerrado e Caatinga|1|Usa pedras como ferramentas para quebrar cocos.',
+'Cachorro-do-mato|Cerdocyon thous|d|#8a7a6a|#3a2a1a|V|Várias regiões|1|Canídeo onívoro que caça à noite e come frutos e pequenos animais.',
+'Veado-catingueiro|Mazama gouazoubira|d|#b08a5a|#f4e6c9|Vh|Cerrado e Caatinga|1|Cervídeo pequeno e tímido, ativo ao amanhecer e ao entardecer.',
+'Sabiá-laranjeira|Turdus rufiventris|b|#8d6e4a|#e08a3c|V|Mata Atlântica|1|Ave-símbolo do Brasil, famosa pelo canto melodioso.',
+'Bem-te-vi|Pitangus sulphuratus|b|#8a6b3d|#ffd23f|Vy|Várias regiões|1|O nome imita o seu canto. Come insetos, frutos e até pequenos peixes.',
+'João-de-barro|Furnarius rufus|b|#b5733a|#e6c999|V|Campos e cidades|1|Constrói o ninho em forma de forno com barro e palha.',
+'Quero-quero|Vanellus chilensis|b|#8d8d7a|#f4f4f4|Vc|Pampa e campos|1|Defende o ninho no chão com gritos e voos rasantes.',
+'Beija-flor-tesoura|Eupetomena macroura|b|#2a8f6a|#3a5bd9|s|Cerrado e cidades|1|Bate as asas dezenas de vezes por segundo para pairar nas flores.',
+'Teiu|Salvator merianae|l|#5a5a4a|#e8e0c0|T|Cerrado e Caatinga|1|Grande lagarto onívoro que hiberna no inverno.',
+'Sapo-cururu|Rhinella diptycha|a|#8a6a3d|#d9b36a|S|Várias regiões|1|Libera veneno pelas glândulas atrás da cabeça para se defender.',
+'Perereca-verde|Boana albopunctata|a|#5fbf5a|#f1f1f1|V|Mata Atlântica e Cerrado|1|Tem ventosas nos dedos e sobe em troncos e folhas.',
+'Cágado-de-barbicha|Phrynops geoffroanus|t|#4a5a3a|#c9c9a0|V|Rios do Brasil|1|Passa grande parte do tempo na água e se esconde sob o casco.',
+'Piranha-vermelha|Pygocentrus nattereri|f|#a8a8b0|#c0392b|V|Pantanal e Amazônia|1|Vive em cardumes e tem dentes cortantes; também é carniçeira.',
+'Tucunaré|Cichla ocellaris|f|#5a8f3a|#e0b040|T|Amazônia|1|Tem uma mancha em forma de olho perto da cauda para enganar predadores.',
+'Tambaqui|Colossoma macropomum|f|#4a3a2a|#c9a06a|V|Amazônia|1|Quebra sementes com dentes fortes e ajuda a espalhá-las nas florestas alagadas.',
+'Caranguejo-uçá|Ucides cordatus|k|#c0553a|#e6a06a|S|Manguezal (Maranhão)|1|Vive em tocas no mangue lodoso e é importante para a pesca artesanal.',
+'Borboleta-azul|Morpho helenor|i|#3a7bd9|#1b1b2f|S|Mata Atlântica e Amazônia|1|As asas azuis refletem a luz e brilham, mas o avesso é marrom.',
+'Formiga-cortadeira|Atta sexdens|e|#8a3a1a|#c26a3a||Várias regiões|1|Corta folhas para cultivar um fungo, que é o seu alimento.',
+'Vaga-lume|Lampyridae|e|#3a3a2a|#e6ff5a||Várias regiões|1|Produz luz fria por reação química para atrair parceiros.',
+'Besouro-rinoceronte|Dynastes hercules|e|#3a2a1a|#6a4a2a|h|Amazônia|1|Um dos insetos mais fortes do mundo, levanta dezenas de vezes seu peso.',
+'Coruja-buraqueira|Athene cunicularia|b|#8a6a4a|#f4f4f4|Vo|Campos e Cerrado|1|Faz ninho em tocas no chão e é ativa também de dia.',
+'Garça-branca|Ardea alba|w|#f4f4f4|#f4f4f4|y|Zonas úmidas|1|Pesca imóvel à beira da água, esperando o momento certo de bicar.',
+'Jacaré-do-pantanal|Caiman yacare|l|#4a5a3a|#c9c9a0|pc|Pantanal|1|Ajuda a controlar populações de peixes, como as de piranha.',
+'Galo-da-campina|Paroaria dominicana|b|#4a4a4a|#e63946|c|Caatinga e Nordeste|1|Ave de crista vermelha comum no Nordeste e no Maranhão.',
+'Siri-azul|Callinectes sapidus|k|#3a7bd9|#f4f4f4|S|Costa e estuários|1|Nada usando as patas traseiras como remos e é comum em estuários.',
+'Serelepe|Guerlinguetus brasiliensis|r|#8a4a2a|#e6c27a|Vl|Mata Atlântica|1|Esconde sementes e ajuda na regeneração da floresta.',
+'Papagaio-verdadeiro|Amazona aestiva|b|#2fa84a|#ffd23f|y|Cerrado e Caatinga|1|Consegue imitar sons e até a voz humana.',
+'Suçuarana|Puma concolor|c|#c9a06a|#f4e6c9|V|Várias regiões|2|Segundo maior felino das Américas, vive do Pampa à Amazônia.',
+'Jaguatirica|Leopardus pardalis|c|#d2a85a|#2b2b2b|S|Várias regiões|2|Felino de médio porte e excelente caçador noturno.',
+'Gato-maracajá|Leopardus wiedii|c|#c9a05a|#3a2a1a|S|Mata Atlântica e Amazônia|2|Sobe em árvores e consegue descer de cabeça para baixo.',
+'Lobo-guará|Chrysocyon brachyurus|d|#c26a2a|#1b1b2f|V|Cerrado|2|Maior canídeo da América do Sul, com pernas longas.',
+'Tamanduá-mirim|Tamandua tetradactyla|m|#c9a06a|#2b2b2b|nlV|Várias regiões|2|Come formigas e cupins e tem cauda preênsil.',
+'Queixada|Tayassu pecari|m|#4a3a2a|#f4f4f4|V|Amazônia e Pantanal|2|Vive em bandos de dezenas de animais.',
+'Anta|Tapirus terrestris|m|#6b5a4a|#c9b79a|nV|Várias regiões|2|Maior mamífero terrestre do Brasil e grande dispersora de sementes.',
+'Bugio|Alouatta guariba|p|#8a3a1a|#4a1f0a|V|Mata Atlântica|2|Emite urros que são ouvidos a quilômetros de distância.',
+'Preguiça-de-três-dedos|Bradypus variegatus|p|#a89a7a|#6b5a3a|V|Amazônia e Mata Atlântica|2|Move-se devagar e tem algas crescendo nos pelos.',
+'Arara-vermelha|Ara chloropterus|b|#d62828|#1e5bd6|l|Amazônia e Cerrado|2|Forma casais para a vida inteira.',
+'Arara-canindé|Ara ararauna|b|#2a6fd9|#f2c200|Vl|Amazônia e Pantanal|2|Costuma comer argila dos barrancos para ajudar na digestão.',
+'Tucano-toco|Ramphastos toco|b|#1b1b2f|#f4f4f4|Vky|Cerrado e Pantanal|2|O bico grande ajuda a controlar a temperatura do corpo.',
+'Tuiuiú|Jabiru mycteria|w|#f4f4f4|#d62828|V|Pantanal|2|Ave-símbolo do Pantanal; tem uma faixa vermelha no pescoço.',
+'Colhereiro|Platalea ajaja|w|#ff9db0|#f4f4f4|d|Zonas úmidas|2|O bico em forma de colher filtra o alimento na água.',
+'Seriema|Cariama cristata|b|#a8a08a|#f4f4f4|Vcl|Cerrado e Caatinga|2|Quebra pequenos animais batendo-os contra o chão.',
+'Cobra-coral|Micrurus corallinus|s|#d62828|#f2c200|T|Mata Atlântica|2|Tem anéis coloridos e veneno potente; falsas-corais imitam o padrão.',
+'Jiboia|Boa constrictor|s|#8a6a4a|#3a2a1a|T|Várias regiões|2|Mata por constrição e não tem veneno.',
+'Tartaruga-verde|Chelonia mydas|t|#5a7a3a|#c9c97a|S|Costa brasileira|2|Migra longas distâncias; os filhotes seguem a luz do mar.',
+'Cervo-do-pantanal|Blastocerus dichotomus|d|#b5762f|#4a2f1a|Vh|Pantanal|2|Maior cervídeo da América do Sul, vive em áreas alagadas.',
+'Pirarucu|Arapaima gigas|f|#6b3a3a|#c0c0c0|V|Amazônia|2|Um dos maiores peixes de água doce; respira ar na superfície.',
+'Ariranha|Pteronura brasiliensis|r|#6b4a2a|#f4e6c9|V|Amazônia e Pantanal|2|Lontra gigante que vive em grupos familiares e pesca em equipe.',
+'Guará|Eudocimus ruber|w|#ff4f4f|#ffb3b3||Manguezal (Maranhão)|2|Ave do manguezal que fica vermelha por causa dos carotenoides do alimento.',
+'Sagui-de-tufos-brancos|Callithrix jacchus|p|#8a7a6a|#f4f4f4|T|Caatinga e Mata Atlântica|2|Vive em grupos e come seiva e insetos.',
+'Cateto|Dicotyles tajacu|m|#5a4a3a|#c9b79a|V|Várias regiões|2|Parente do porco, vive em bandos e tem uma faixa clara no pescoço.',
+'Gavião-carijó|Rupornis magnirostris|b|#8a6a4a|#f4f4f4|Vc|Várias regiões|2|Ave de rapina comum que caça pequenos animais.',
+'Poraquê|Electrophorus voltai|f|#3a3a3a|#e6a02a|V|Amazônia|2|Gera descargas elétricas fortes para caçar e se defender.',
+'Jacaré-de-papo-amarelo|Caiman latirostris|l|#5a6a3a|#e6d26a|pcV|Mata Atlântica e Pantanal|2|Tem o papo amarelado e vive em lagoas e manguezais.',
+'Saíra-sete-cores|Tangara seledon|b|#2fa84a|#3a7bd9|V|Mata Atlântica|2|Ave colorida que come frutos e ajuda a dispersar sementes.',
+'Lontra|Lontra longicaudis|r|#6b4a2a|#c9a06a|V|Rios e lagos|2|Pesca com habilidade e vive em tocas nas margens.',
+'Onça-preta|Panthera onca|c|#2a2a32|#3a3a46|S|Amazônia|3|É uma onça-pintada com excesso de melanina; as manchas aparecem sob a luz.',
+'Harpia|Harpia harpyja|b|#6b6b72|#f4f4f4|Vch|Amazônia|3|Águia gigante com garras do tamanho das de um urso.',
+'Arara-azul-grande|Anodorhynchus hyacinthinus|b|#1e4bd9|#ffd23f|ly|Pantanal e Cerrado|3|Maior arara do mundo, ameaçada pela perda de habitat.',
+'Tatu-canastra|Priodontes maximus|m|#6b5a4a|#c9b79a|al|Cerrado e Amazônia|3|Maior tatu do mundo; suas tocas abrigam outros animais.',
+'Tamanduá-bandeira|Myrmecophaga tridactyla|m|#8a8a8a|#1b1b2f|nlT|Cerrado|3|Come milhares de formigas e cupins por dia com a língua comprida.',
+'Sucuri|Eunectes murinus|s|#4a5a3a|#1b1b2f|S|Amazônia e Pantanal|3|Uma das maiores cobras do mundo; passa muito tempo na água.',
+'Jacaré-açu|Melanosuchus niger|l|#2a2a2a|#4a4a4a|pc|Amazônia|3|Maior predador da Amazônia, chega a mais de 5 metros.',
+'Boto-cor-de-rosa|Inia geoffrensis|f|#ff9db0|#f4c4d0|MV|Amazônia|3|Golfinho de água doce; usa sonar para navegar em rios turvos.',
+'Ararajuba|Guaruba guarouba|b|#ffd23f|#2fa84a|lV|Amazônia|3|Arara amarela e verde, rara e símbolo do Pará.',
+'Tartaruga-de-pente|Eretmochelys imbricata|t|#8a6a2a|#e6b54a|S|Costa brasileira (Maranhão)|3|Ameaçada de extinção; tem escudos sobrepostos no casco.',
+'Muriqui-do-norte|Brachyteles hypoxanthus|p|#c9a06a|#8a6a3a|V|Mata Atlântica|3|Maior primata das Américas; vive em grupos pacíficos e é criticamente ameaçado.',
+'Mico-leão-dourado|Leontopithecus rosalia|p|#e69a2a|#f2b84a|V|Mata Atlântica|3|Símbolo da conservação; foi salvo da extinção por projetos de reintrodução.',
+'Onça-pintada|Panthera onca|c|#e6b030|#1b1b2f|S|Amazônia, Pantanal e Cerrado|4|Maior felino das Américas, com a mordida mais forte entre os felinos.',
+'Ararinha-azul|Cyanopsitta spixii|b|#4aa0e6|#6ac0f0|l|Caatinga|4|Extinta na natureza; aves de cativeiro estão sendo reintroduzidas na Caatinga.',
+'Peixe-boi-marinho|Trichechus manatus|f|#7a8a96|#a9b4bd|MV|Costa do Nordeste (Maranhão)|4|Mamífero marinho calmo e ameaçado; come algas e capim marinho.',
+'Peixe-boi-da-amazônia|Trichechus inunguis|f|#6a6a72|#c9c9d1|MV|Amazônia|4|Único sirênio exclusivo de água doce; come uma boa parte do próprio peso por dia.'];
+const BRN=['','Comum','Raro','Épico','Lendário'],BRC=['','#9fb0c6','#4cc9f0','#c77dff','#ffd23f'],BIC={};
+function bioImg(i){if(BIC[i])return BIC[i];const q=BIO[i].split('|'),t=q[2],c1=q[3],c2=q[4],fl=q[5],c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d'),D='#1b1b2f',E='#111',N=fl.includes('y')?'#ffd23f':fl.includes('k')?'#f2a33a':'#555';
+ const dr=ov=>{const R=(col,a,b,w,h)=>{x.fillStyle=ov||col;x.fillRect(a,b,w,h)},leg=(l,y,w,h)=>l.forEach(a=>R(c1,a,y,w,h));
+  if(t=='c'){R(c1,6,12,16,8);R(c1,21,8,8,16>8?8:8);R(c1,22,6,2,2);R(c1,27,6,2,2);leg([8,12,17,20],20,3,6);R(c1,1,10,5,2);R(c1,1,8,2,4);R(E,26,10,1,1);R(N,28,12,1,1)}
+  else if(t=='d'){R(c1,8,12,14,6);R(c1,21,9,7,6);R(c1,27,12,4,3);R(c1,22,6,2,3);R(c1,26,6,2,3);leg([9,13,18,21],18,2,8);R(c1,3,10,6,3);R(c2,24,13,3,2);R(E,25,11,1,1);R(N,30,12,1,1);if(fl.includes('h')){R(D,23,2,1,5);R(D,27,2,1,5);R(D,22,2,2,1);R(D,27,2,2,1)}}
+  else if(t=='m'){R(c1,6,11,18,10);R(c1,23,12,6,6);R(c1,28,14,3,3);R(c1,23,10,2,2);leg([8,12,18,21],21,3,5);R(c1,3,12,3,2);R(E,26,13,1,1);R(N,30,15,1,1);if(fl.includes('n')){R(c1,28,13,4,2);R(c1,30,15,2,2)}if(fl.includes('l'))R(c1,0,9,7,5);if(fl.includes('a'))for(let k=0;k<5;k++)R(c2,8+k*3,11,1,8)}
+  else if(t=='r'){R(c1,10,16,12,7);R(c1,21,15,6,5);R(c1,22,13,2,2);R(c1,12,23,2,3);R(c1,18,23,2,3);R(c1,6,18,4,1);R(E,25,16,1,1);R(N,27,18,1,1);if(fl.includes('l'))R(c1,3,14,7,3)}
+  else if(t=='p'){R(c1,13,10,7,10);R(c1,13,5,7,6);R(c1,10,11,3,8);R(c1,20,11,3,8);R(c1,13,20,3,6);R(c1,17,20,3,6);R(c1,21,18,3,2);R(c1,24,14,2,6);R(c1,22,12,3,2);R(c2,15,7,4,3);R(E,16,7,1,1);R(E,18,7,1,1)}
+  else if(t=='b'){if(fl.includes('s')){R(c1,14,13,6,5);R(c1,19,11,4,4);R(N,22,12,8,1);R(c2,12,9,6,4);R(c1,10,16,4,2);R(E,21,12,1,1)}else if(fl.includes('o')){R(c1,11,9,10,12);R(c1,10,5,12,8);R('#ffd23f',12,8,3,3);R('#ffd23f',17,8,3,3);R(D,13,9,1,1);R(D,18,9,1,1);R(N,15,11,2,2);R(D,13,21,2,3);R(D,17,21,2,3);R(c2,12,14,8,5)}else{R(c1,11,10,10,10);R(c1,19,6,6,6);R(N,24,8,fl.includes('k')?8:5,fl.includes('k')?4:3);R(c2,11,12,8,5);R(c1,6,16,6,4);R(D,14,20,1,5);R(D,17,20,1,5);R(E,22,8,1,1);if(fl.includes('c'))R(c2,19,3,4,3);if(fl.includes('l'))R(c1,1,16,10,3)}}
+  else if(t=='w'){R(c1,10,8,10,7);R(c1,19,3,3,8);R(c1,19,2,6,4);if(fl.includes('d')){R(N,24,3,3,2);R(N,26,2,4,4)}else R(N,24,3,6,2);R(D,13,15,1,11);R(D,17,15,1,11);R(c1,6,10,5,3);R(E,22,3,1,1)}
+  else if(t=='f'){R(c1,6,12,18,8);R(c1,8,10,14,12);R(c2,2,11,4,10);R(c2,12,7,6,3);R(c2,14,22,5,3);R(E,22,14,1,2);R(D,24,17,3,1);if(fl.includes('M')){R(c2,12,20,6,3);R(c1,24,15,5,3)}}
+  else if(t=='s'){let hy=0;for(let k=0;k<12;k++){hy=18+Math.round(Math.sin(k*.9)*3);R(c1,4+k*2,hy,3,3)}R(c1,26,hy-1,5,5);R(E,29,hy,1,1);R('#e63946',31,hy+2,1,1)}
+  else if(t=='l'){R(c1,6,16,18,5);R(c1,23,15,8,4);R(c1,9,21,3,3);R(c1,20,21,3,3);R(c1,0,17,6,3);R(E,26,15,1,1);if(fl.includes('c'))R(c1,23,16,9,3);if(fl.includes('p'))for(let k=0;k<8;k++)R(c2,7+k*2,15,1,2)}
+  else if(t=='t'){R(c1,8,12,16,8);R(c1,10,10,12,2);R(c2,23,16,5,4);R(c2,10,20,3,3);R(c2,19,20,3,3);R(c2,5,18,3,2);R(E,26,17,1,1)}
+  else if(t=='a'){R(c1,10,14,12,8);R(c1,19,12,8,6);R('#fff',20,10,3,3);R('#fff',24,10,3,3);R(E,22,11,1,1);R(E,25,11,1,1);R(c1,6,20,6,4);R(c1,20,20,6,4);R(c2,12,16,8,4)}
+  else if(t=='i'){R(c1,6,9,9,8);R(c1,17,9,9,8);R(c1,8,17,7,5);R(c1,17,17,7,5);R(D,15,8,2,14);R(D,13,5,1,3);R(D,18,5,1,3)}
+  else if(t=='e'){R(c1,9,14,14,8);R(c1,11,12,10,12);R(D,22,16,4,4);R(c2,15,13,2,9);[10,14,18,22].forEach(a=>R(D,a,22,2,4));if(fl.includes('h'))R(D,25,11,2,6)}
+  else{R(c1,10,14,12,7);R(c1,5,10,5,5);R(c1,22,10,5,5);R(D,7,10,1,3);R(D,24,10,1,3);[8,12,18,22].forEach(a=>R(c1,a,20,2,4));R('#fff',13,12,2,3);R('#fff',18,12,2,3);R(E,14,13,1,1);R(E,19,13,1,1)}};
+ [[-1,0],[1,0],[0,-1],[0,1]].forEach(o=>{x.save();x.translate(o[0],o[1]);dr(D);x.restore()});dr();
+ const im=x.getImageData(0,0,32,32),a=im.data,h2=parseInt(c1.slice(1),16),r1=h2>>16,g1=(h2>>8)&255,b1=h2&255,k=parseInt(c2.slice(1),16);
+ for(let yy=0;yy<32;yy++)for(let xx=0;xx<32;xx++){const p=(yy*32+xx)*4;if(a[p+3]&&a[p]==r1&&a[p+1]==g1&&a[p+2]==b1){const hs=((xx*73856093)^(yy*19349663)^(i*83492791))>>>0;if((fl.includes('S')&&hs%7==0)||(fl.includes('T')&&xx%5<2)||(fl.includes('V')&&yy>=19)){a[p]=k>>16;a[p+1]=(k>>8)&255;a[p+2]=k&255}}}
+ x.putImageData(im,0,0);return BIC[i]=c.toDataURL()}
+const bday=()=>{const t=new Date();return t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()};
+function gbio(){const b=ls('bbbio')||{d:'',r:0,e:0,st:0,col:{},tot:0};if(b.d!==bday()){b.d=bday();b.r=0;b.e=0}return b}
+function bioRound(ok){const b=gbio();let m;if(!ok)m='🥚 Passe do nível 5 para a rodada contar para o ovo diário (hoje: '+b.r+' rodadas, '+b.e+'/3 ovos).';else{b.r++;if(b.e<3&&b.r>=5*(b.e+1)){b.e++;b.st++;m='🥚 Você ganhou um ovo de Biomon! Veja na aba Biomons do menu.'}else m=b.e>=3?'🥚 Limite de 3 ovos por dia atingido.':'🥚 Rodada válida! '+(b.r-5*b.e)+'/5 para o próximo ovo.'}ls('bbbio',b);return m}
+function bioTab(c){const b=gbio(),n=Object.keys(b.col).length,pr=Math.max(0,Math.min(5,b.r-5*Math.min(b.e,3)));
+ let h=`<h3>🥚 Biomons (${n}/${BIO.length})</h3><div class='rv' style='border-color:#19e6a0'><b>Ovos de hoje</b><br>Rodadas válidas hoje: <b>${b.r}</b> • Ovos ganhos: <b>${b.e}/3</b><br>${b.e>=3?'Limite diário atingido. Volte amanhã!':`Próximo ovo: <b>${pr}/5</b> rodadas`}<br><small>Uma rodada vale quando você passa do nível 5 (chega à 6ª pergunta ou mais), ganhando ou perdendo. A cada 5 rodadas válidas você ganha 1 ovo (máximo de 3 por dia).</small></div>`;
+ h+=`<div class='rv' style='text-align:center'><b>Seus ovos: ${b.st}</b><br>${b.st?`<button class='go' onclick='bioHatch()'>🥚 Chocar um ovo</button>`:'Nenhum ovo no momento. Jogue o quiz!'}</div>`;
+ h+=`<div class='bg'>${BIO.map((q,i)=>{const k=b.col[i],f=q.split('|');return `<div class='bc ${k?'':'u'}' onclick='bioInfo(${i})'><img src='${bioImg(i)}'><br>${k?`<b>${f[0]}</b><br><span style='color:${BRC[f[7]]}'>${BRN[f[7]]}</span>${k>1?' ×'+k:''}`:'???'}</div>`}).join('')}</div>`;c.innerHTML=h}
+function bioCard(id,top){const f=BIO[id].split('|');return `<div class='card' style='text-align:center'><div style='color:${BRC[f[7]]};font-weight:700'>${top}${BRN[f[7]]}</div><img class='rev' src='${bioImg(id)}' style='width:160px;height:160px;image-rendering:pixelated'><h2>${f[0]}</h2><p style='font-size:13px'><i>${f[1]}</i><br>Bioma: ${f[6]}</p><p>${f[8]}</p><button class='go' onclick='bioX()'>Fechar</button></div>`}
+function bioInfo(i){const b=gbio();if(!b.col[i]){toast('Choque ovos para descobrir este Biomon!');return}$('#qz').hidden=false;$('#qz').scrollTop=0;$('#qz').innerHTML=bioCard(i,'Você tem ×'+b.col[i]+' • ')}
+function bioX(){$('#qz').hidden=true;if($('#dr').classList.contains('on')&&cur=='o')tab('o')}
+function bioHatch(){const b=gbio();if(b.st<1)return;const r=Math.random()*100,rar=r<60?1:r<88?2:r<97?3:4;let ids=BIO.map((_,i)=>i).filter(i=>+BIO[i].split('|')[7]==rar);if(!ids.length)ids=BIO.map((_,i)=>i);const id=ids[Math.floor(Math.random()*ids.length)];b.st--;b.col[id]=(b.col[id]||0)+1;b.tot=(b.tot||0)+1;const nw=b.col[id]==1;ls('bbbio',b);
+ $('#qz').hidden=false;$('#qz').scrollTop=0;$('#qz').innerHTML=`<div class='card' style='text-align:center'><h2>Chocando...</h2><div class='egg'></div></div>`;
+ setTimeout(()=>{$('#qz').innerHTML=bioCard(id,nw?'NOVO! ':'Repetido ×'+b.col[id]+' • ');if(nw)fx($('#qz img'),'✨');cur='o'},2300)}
+const DUR=[0,120,600,1800,7200],DURT=['','2 min','10 min','30 min','2 h'],EGC=['','#f1d9a8','#7fd0f5','#c99bff','#ffd966'];
+const bioRoll=()=>{const r=Math.random()*100;return r<60?1:r<88?2:r<97?3:4};
+const bioFmt=s=>Math.floor(s/3600)?Math.floor(s/3600)+'h '+String(Math.floor(s%3600/60)).padStart(2,'0')+'min':String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function gbio(){const b=ls('bbbio')||{d:'',r:0,e:0,eg:[],col:{},tot:0};if(b.d!==bday()){b.d=bday();b.r=0;b.e=0}if(!b.eg)b.eg=[];if(b.st>0){for(let i=0;i<b.st;i++)b.eg.push({r:bioRoll(),t:null});b.st=0;ls('bbbio',b)}return b}
+function bioRound(ok){const b=gbio();let m;if(!ok)m='🥚 Passe do nível 5 para a rodada contar para o ovo diário (hoje: '+b.r+' rodadas, '+b.e+'/3 ovos).';else{b.r++;if(b.e<3&&b.r>=3*(b.e+1)){b.e++;const r=bioRoll();b.eg.push({r,t:null});m='🥚 Você ganhou um ovo '+BRN[r].toUpperCase()+'! Incube na aba Biomons do menu ('+DURT[r]+' para chocar).'}else m=b.e>=3?'🥚 Limite de 3 ovos por dia atingido.':'🥚 Rodada válida! '+(b.r-3*b.e)+'/3 para o próximo ovo.'}ls('bbbio',b);return m}
+function eggRow(e,i,now){const d=DUR[e.r]*1000,ready=e.t&&now>=e.t+d,rem=e.t?Math.max(0,Math.ceil((e.t+d-now)/1000)):0;return `<div class='rw' style='border-color:${EGC[e.r]}'><div class='egs' style='background:radial-gradient(circle at 32% 28%,#fff,${EGC[e.r]} 60%,#0003)'></div><div class='rt'><b>Ovo ${BRN[e.r]}</b><br><small>${!e.t?'Tempo de choca: '+DURT[e.r]:ready?'Pronto para chocar!':'Chocando...'}</small>${e.t&&!ready?`<div class='tr'><i id='eb${i}' style='width:${(100*(1-rem*1000/d)).toFixed(1)}%'></i></div>`:''}</div><div class='rb'>${!e.t?`<button onclick='bioInc(${i})'>Incubar</button>`:ready?`<button onclick='bioHatch(${i})'>🐣 Chocar</button>`:`<b id='et${i}'>${bioFmt(rem)}</b>`}</div></div>`}
+function bioTab(c){const b=gbio(),n=Object.keys(b.col).length,pr=Math.max(0,Math.min(3,b.r-3*Math.min(b.e,3))),now=Date.now();
+ let h=`<h3>🥚 Biomons (${n}/${BIO.length})</h3><div class='rv' style='border-color:#19e6a0'><b>Ovos de hoje</b><br>Rodadas válidas hoje: <b>${b.r}</b> • Ovos ganhos: <b>${b.e}/3</b><br>${b.e>=3?'Limite diário atingido. Volte amanhã!':`Próximo ovo: <b>${pr}/3</b> rodadas`}<br><small>Uma rodada vale quando você passa do nível 5 (chega à 6ª pergunta ou mais), ganhando ou perdendo. A cada 3 rodadas válidas você ganha 1 ovo (máximo de 3 por dia). Cada ovo tem uma raridade e precisa ser incubado: comum 2 min, raro 10 min, épico 30 min e lendário 2 h. A choca continua com o jogo fechado.</small></div>`;
+ h+=`<h3>Seus ovos (${b.eg.length})</h3>`+(b.eg.length?b.eg.map((e,i)=>eggRow(e,i,now)).join(''):`<p class='cd'>Nenhum ovo no momento. Jogue o quiz e passe do nível 5!</p>`);
+ h+=`<h3>Coleção</h3><div class='bg'>${BIO.map((q,i)=>{const k=b.col[i],f=q.split('|');return `<div class='bc ${k?'':'u'}' onclick='bioInfo(${i})'><img src='${bioImg(i)}'><br>${k?`<b>${f[0]}</b><br><span style='color:${BRC[f[7]]}'>${BRN[f[7]]}</span>${k>1?' ×'+k:''}`:'???'}</div>`}).join('')}</div>`;c.innerHTML=h}
+function bioInc(i){const b=gbio();if(!b.eg[i]||b.eg[i].t)return;b.eg[i].t=Date.now();ls('bbbio',b);tab('o')}
+function bioHatch(i){const b=gbio(),e=b.eg[i];if(!e||!e.t||Date.now()<e.t+DUR[e.r]*1000)return;const rar=e.r;let ids=BIO.map((_,k)=>k).filter(k=>+BIO[k].split('|')[7]==rar);if(!ids.length)ids=BIO.map((_,k)=>k);const id=ids[Math.floor(Math.random()*ids.length)];b.eg.splice(i,1);b.col[id]=(b.col[id]||0)+1;b.tot=(b.tot||0)+1;const nw=b.col[id]==1;ls('bbbio',b);
+ $('#qz').hidden=false;$('#qz').scrollTop=0;$('#qz').innerHTML=`<div class='card' style='text-align:center'><h2>Chocando...</h2><div class='egg' style='background:radial-gradient(circle at 32% 28%,#fff,${EGC[rar]} 60%,#0003)'></div></div>`;
+ setTimeout(()=>{$('#qz').innerHTML=bioCard(id,nw?'NOVO! ':'Repetido ×'+b.col[id]+' • ');if(nw)fx($('#qz img'),'✨');cur='o'},2300)}
+function bioTick(){const b=gbio(),now=Date.now();let ch=0,need=0;b.eg.forEach((e,i)=>{if(!e.t)return;const d=DUR[e.r]*1000,rem=Math.max(0,Math.ceil((e.t+d-now)/1000));if(rem<=0){if(!e.n){e.n=1;ch=1;toast('🐣 Um ovo '+BRN[e.r]+' está pronto para chocar!')}if($('#et'+i))need=1}else{const t=$('#et'+i);if(t)t.textContent=bioFmt(rem);const bar=$('#eb'+i);if(bar)bar.style.width=(100*(1-rem*1000/d)).toFixed(1)+'%'}});if(ch)ls('bbbio',b);if(need&&$('#dr').classList.contains('on')&&cur=='o')tab('o')}
+setInterval(bioTick,1000);
 let cur='p';
 function tg(o){const on=o===undefined?!$('#dr').classList.contains('on'):!!o;$('#dr').classList.toggle('on',on);$('#bk').classList.toggle('on',on);if(on)tab(cur);else hello()}
 function tab(t){try{tab2(t)}catch(e){$('#dc').innerHTML='<p>Não foi possível abrir esta aba. Toque em outra aba.</p>'}}
@@ -936,7 +1073,7 @@ function tab2(t){if(t!='d')cur=t;document.querySelectorAll('.tabs .sec').forEach
  if(t=='p'){c.innerHTML=`<div id='prof'></div>`;prof()}
  else if(t=='d'){const S=ls('bbstats'),H=gh();if(!S&&!H.length){c.innerHTML='<p>Jogue uma partida para gerar seu primeiro diagnóstico.</p>';return}let h='';if(S){const P=a=>Math.round(100*a[0]/a[1]),ks=Object.keys(S.tp).sort((x,y)=>P(S.tp[x])-P(S.tp[y]));h+=`<h3>Visão geral</h3><p>Partidas: <b>${S.g}</b> • Milhões: <b>${S.w}</b> • Melhor: <b>${bm(b.best)}</b></p><h3>Acertos por assunto (todas as partidas)</h3>`+ks.map(k=>`<div class='pl'><span style='flex:0 0 112px;font-size:12px'>${T[k][0]}</span><div class='tr'><i style='width:${P(S.tp[k])}%'></i></div><span style='font-size:12px'>${P(S.tp[k])}% • ${Math.round(S.tm[k][0]/S.tm[k][1])}s</span></div>`).join('')+`<h3>Por dificuldade</h3>`+[1,2,3].filter(d=>S.df[d]).map(d=>`<div class='pl'><span style='flex:0 0 112px;font-size:12px'>${['','Fácil','Médio','Difícil'][d]}</span><div class='tr'><i style='width:${P(S.df[d])}%'></i></div><span style='font-size:12px'>${S.df[d][0]}/${S.df[d][1]}</span></div>`).join('');const hp=Object.keys(S.hp);if(hp.length)h+=`<p style='font-size:13px'>🆘 Ajudas usadas: ${hp.map(k=>k+' ×'+S.hp[k]).join(', ')}</p>`;}h+=study()+`<h3>Partidas anteriores</h3>`+H.map((e,i)=>`<button class='sec' style='width:100%;text-align:left;margin:4px 0' onclick='tg(0);rever(${i})'>📋 ${e.d}${e.v!=null?' • '+bm(e.v):''}${e.o!=null?' • '+e.o+(e.o==1?' acerto':' acertos'):''}</button>`).join('');c.innerHTML=h}
  else if(t=='b')c.innerHTML=`<div class='big' id='bbal'>${bm(b.bal)}</div>${LB?`<div class='rv' style='border-color:#19e6a0'>${LB}</div>`:''}<p>Renda passiva: <b id='bpr'>${bm(rate(b))}/s</b> (até 8 h offline)<br>Recorde em uma partida: <b>${bm(b.best)}</b><br>Total ganho: ${bm(b.tot)} • Gasto: ${bm(b.sp)}</p><div class='rv' style='border-color:#ffd23f'><b>Como funciona</b><br>• Os prêmios das partidas (com bônus) são depositados aqui.<br>• <b>Renda passiva:</b> Equipe, Institutos, NPCs, Casas (aluguel), Barcos e aeronaves e Megaprojetos geram B$ por segundo, sozinhos, mesmo com o jogo fechado (máx. 8 h). Os ganhos se acumulam a cada unidade comprada.<br>• Cada compra desses itens aumenta em 15% o preço da próxima unidade igual. Megaprojetos dão +10% e ultra-projetos +25% na renda total por unidade.<br>• 🔒 Itens bloqueados liberam quando sua renda passiva (ou, nos itens de coleção, o total já ganho) atinge o valor indicado: jogue o quiz para destravar!<br>• Bicicletas, motos e carros são só <b>coleção e visual</b>: aparecem no mundinho e valem conquistas, mas não geram renda.</div>`+shopList(b);
- else if(t=='w')c.innerHTML=`<h3>Meu mundinho (${b.own.length}/${IT.length})</h3>${wbox()}<p style='font-size:12px;opacity:.8'>Compre itens na loja para povoar sua ilha: casas nos bairros (São Luís, Rio, EUA e China) e veículos nas ruas.</p>`+grid(b,0);
+ else if(t=='o')bioTab(c);else if(t=='w')c.innerHTML=`<h3>Meu mundinho (${b.own.length}/${IT.length})</h3>${wbox()}<p style='font-size:12px;opacity:.8'>Compre itens na loja para povoar sua ilha: casas nos bairros (São Luís, Rio, EUA e China) e veículos nas ruas.</p>`+grid(b,0);
  else c.innerHTML=`<h3>Conquistas (${b.ach.length}/${A.length})</h3>`+A.map(a=>{const g=b.ach.includes(a[0]);return `<div class='rv' style='border-color:${g?'#ffd23f':'#456'};opacity:${g?1:.65}'>${a[1]} <b>${a[2]}</b>${g?' ✔':''}<br>${a[3]} • prêmio ${bm(a[4])}</div>`}).join('')}
 function hello(){const p=gp(),b=gb();$('#hello').innerHTML=`<div class='pf'>${av(p.a,48)}<div><b>${esc(p.n||'Jogador')}</b><br><span style='font-size:13px'>🏦 ${bm(b.bal)} • recorde ${bm(b.best)}</span></div></div>`}
 function home(){show('s0');hello()}
@@ -1021,12 +1158,12 @@ function timeHtml(){
  const dif=`<h3>Por dificuldade</h3>`+[1,2,3].map(d=>{const a=L.filter(l=>l.d==d);if(!a.length)return '';const ok=a.filter(l=>l.ok).length;return `<div class='pl'><span style='flex:0 0 64px;font-size:13px'>${NV[d]}</span><div class='tr'><i style='width:${100*ok/a.length}%'></i></div>${ok}/${a.length} • ${f(Math.round(mean(a)))}</div>`}).join('')+`<p style='font-size:13px'>${ef?'⚠️ Você errou '+ef+' pergunta(s) fácil(eis): são base de prova, reforce antes de avançar. ':''}${dh?'💪 Acertou '+dh+' difícil(eis): bom raciocínio interpretativo.':''}</p>`;
  return `<h3>Tempo e ajudas</h3><p>Média de <b>${f(avg)}</b> por pergunta (total ${f(sum)}). O cronômetro não pune: ele só mostra onde você pensa mais.</p>${rows}${dif}<h3>Perfil das respostas</h3>${Object.keys(cn).map(k=>`<div class="rv"><b>${k}</b> × ${cn[k]}<br>${tip[k]}</div>`).join("")}<h3>As mais demoradas</h3>${top.map(l=>`<div class="rv">${l.q}<br><em>${f(l.s)} • ${T[l.t][0]} • ${cls(l)}${l.h.length?" • ajudas: "+l.h.join(", "):""}</em></div>`).join("")}`;
 }
-function end(kind,val){clearInterval(st.iv);clearTimeout(st.mt);document.body.classList.remove('mil','fast');val=Math.round(val*(st.mult||1));const bk=gb(),nr=val>bk.best;bk.bal+=val;bk.tot+=val;bk.best=Math.max(bk.best,val);const am=chk(bk);ls('bbbank',bk);am.forEach((t,i)=>setTimeout(()=>toast(t),2200*i+1500));
+function end(kind,val){clearInterval(st.iv);clearTimeout(st.mt);document.body.classList.remove('mil','fast');val=Math.round(val*(st.mult||1));const bioM=bioRound(st.i>=5);const bk=gb(),nr=val>bk.best;bk.bal+=val;bk.tot+=val;bk.best=Math.max(bk.best,val);const am=chk(bk);ls('bbbank',bk);am.forEach((t,i)=>setTimeout(()=>toast(t),2200*i+1500));
  const done=st.list.slice(0,st.i+1);ls("bbseen",[...st.seen.filter(x=>!done.includes(x)),...done]);
  const tp=Object.keys(st.tot),weak=tp.filter(t=>st.hit[t]!=st.tot[t]||st.log.some(l=>l.t==t&&l.ok&&(l.h.length||l.s>45))).sort((a,b)=>st.log.filter(l=>l.t==b&&l.ok===false).reduce((x,l)=>x+4-l.d,0)-st.log.filter(l=>l.t==a&&l.ok===false).reduce((x,l)=>x+4-l.d,0));
  const msg={win:"🏆 MILIONÁRIO! Você chegou a B$ 1.000.000!",stop:"✋ Você parou e levou o prêmio para casa.",lose:st.i==15?"💥 Pergunta do milhão errada: você perde tudo.":st.bd[st.i]?"💥 Rodada bônus errada: você perde tudo desta partida.":"💥 Resposta errada: você leva metade do que tinha acumulado."}[kind];
  say(kind=="win"?"Parabéns, campeão!":"Fim de jogo! Veja seu diagnóstico.");
- const pf=gp();$("#s2").innerHTML=`<div class="pf">${av(pf.a,56)}<b>${esc(pf.n||"Jogador")}</b></div><div>${msg}</div><div class="big">${fm(val)}</div>${st.mult>1?`<p>🎯 Bônus ×${st.mult} aplicado ao prêmio.</p>`:''}<p>🏦 Depositado no seu banco${nr?' — novo recorde pessoal! 🎉':''}. Saldo: ${bm(bk.bal)}</p>
+ const pf=gp();$("#s2").innerHTML=`<div class="pf">${av(pf.a,56)}<b>${esc(pf.n||"Jogador")}</b></div><div>${msg}</div><div class="big">${fm(val)}</div>${st.mult>1?`<p>🎯 Bônus ×${st.mult} aplicado ao prêmio.</p>`:''}<p>🏦 Depositado no seu banco${nr?' — novo recorde pessoal! 🎉':''}. Saldo: ${bm(bk.bal)}</p><p>${bioM}</p>
  <h3>Desempenho por assunto</h3>${tp.map(t=>{const h=st.hit[t]||0,p=Math.round(100*h/st.tot[t]);return `<div class="pl"><span style="flex:0 0 120px;font-size:13px">${T[t][0]}</span><div class="tr"><i style="width:${p}%"></i></div>${h}/${st.tot[t]}</div>`}).join("")}
  ${timeHtml()}<h3>O que estudar primeiro</h3>${weak.length?weak.map(t=>`<div class="rv"><b>${T[t][0]}</b> – revise: ${T[t][1]}.</div>`).join(""):"<p>Nenhum ponto fraco nesta rodada. Jogue de novo: as perguntas mudam e o diagnóstico fica mais completo.</p>"}
  ${st.miss.length?`<h3>Decore estas respostas</h3>${st.miss.map(m=>`<div class="rv">${m.q}<br><em>✔ ${m.r}</em><br><small>${m.x||''}</small> <small>(${["","fácil","média","difícil"][m.d]})</small></div>`).join("")}`:""}
